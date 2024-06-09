@@ -29,3 +29,11 @@ $(GITHUB_PAGE): deps pixify
 	mkdir -p _site
 	cp -R static _site/
 	$(POETRY) run python pixyverse/dev/__init__.py | tee _site/index.html
+
+
+.PHONY: clean
+clean:
+	find . -type d -name "__pycache__" | xargs rm -rf {};
+	rm -rf $(INSTALL_STAMP)
+	rm -rf $(POETRY_STAMP)
+	rm -rf _site
