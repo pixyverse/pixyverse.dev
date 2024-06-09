@@ -34,7 +34,7 @@ def h_stack(tagName, props, children):
 def code_highlight(tagName, props, children):
     child_str = "".join(children)
     language = props['language']
-    lexer = HtmlLexer() 
+    lexer = HtmlLexer()
     if language == "python":
         lexer = PythonLexer()
     return <pre><code>{(highlight(child_str, lexer, HtmlFormatter()))}</code></pre>

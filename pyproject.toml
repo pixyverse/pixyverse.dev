@@ -12,6 +12,9 @@ pixyverse-render-html = "^0.1.5"
 pygments = "^2.18.0"
 
 
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

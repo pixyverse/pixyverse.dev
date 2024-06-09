@@ -7,9 +7,9 @@ on:
     branches: [ "main" ]
 
 jobs:
-  environment: github-pages
-  publish:
 
+  publish:
+    environment: github-pages
     runs-on: ubuntu-latest
 
     steps:
@@ -34,7 +34,7 @@ jobs:
     - name: Upload artifact
       id: upload-pages-artifact
       uses: actions/upload-pages-artifact@v3.0.1
-      
+
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4      
+      uses: actions/deploy-pages@v4
