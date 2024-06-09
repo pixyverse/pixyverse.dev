@@ -1,0 +1,144 @@
+from pixyverse.render_html.render import create_element
+from pygments import highlight
+from pygments.lexers import HtmlLexer, PythonLexer
+from pygments.formatters import HtmlFormatter
+
+jost_style = """
+
+
+.float_left {
+    float: left;
+}
+
+.float_right {
+    float: right;
+}
+
+.fig {
+    width: 100px;
+    height: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+"""
+
+def h_stack(tagName, props, children):
+    gap = props['gap'] if 'gap' in props else 'initial'
+    return <div style={f"'display: flex; gap: {gap}'"}>{children}</div>
+
+
+def code_highlight(tagName, props, children):
+    child_str = "".join(children)
+    language = props['language']
+    lexer = HtmlLexer() 
+    if language == "python":
+        lexer = PythonLexer()
+    return <pre><code>{(highlight(child_str, lexer, HtmlFormatter()))}</code></pre>
+
+def link_to(tagName, props, children):
+    return <a href={props["target"]}>{children}</a>
+
+doc = (
+<html>
+<head>
+<link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css"/>
+
+<style>
+{HtmlFormatter().get_style_defs('.highlight')}
+{jost_style}
+</style>
+</head>
+<body class_=".layout-simple">
+<header class_="header">
+    <h1><a href="/">"Pixy"</a></h1>
+    <nav>
+        <menu class_="flex align-end">
+            <li><a href="#what">"What"</a></li>
+            <li><a href="#why">"Who"</a></li>
+            <li><a href="#why">"Why"</a></li>
+            <li><a href="#how">"How"</a></li>
+            <li><a href="#get">"Get"<img src="static/imgs/icons8-github-24.png"/></a></li>
+
+            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"<img src="static/imgs/icons8-discord-24.png"/></link_to></li>
+        </menu>
+    </nav>
+</header>
+<main>
+
+<section>
+<header>
+<h2  id="what">"What"</h2>
+</header>
+<img src="static/imgs/pixy.png" class_="fig float_right p-1"/>
+<p>"""
+Pixy refers to both code written in the Pixy language, an extension of Python that supports component syntax embedded in Python.
+"""</p><p>"""
+It also refers to the transpiler that transpiles Pixy language code into regular Python.
+"""</p>
+
+<h3>"Examples"</h3>
+<h4>"Example Pixy Code"</h4>
+<code_highlight language="html">"""
+todo_page = (
+    <div class_name="TodoList">
+        <todo_list>
+            <todo_item status={Status.Completed}>"Remember the milk"</todo_item>
+            <todo_item status={Status.Todo}>"Buy a dozen eggs"</todo_item>
+        </todo_list>
+    </div>
+    )
+"""</code_highlight>
+
+<h4>"Reusuable custom component function"</h4>
+<code_highlight language="python">"""
+def todo_list(tagName, props, children=[]):
+    todos = props['todos']
+    return (<ul class_="todo-list">
+                {
+                    [<todo_item todo={todo}/> for todo in todos]}
+            </ul>)
+"""</code_highlight>
+</section>
+
+<section>
+<header>
+<h2  id="who">"Who"</h2>
+</header>
+<img src="static/imgs/who.png" class_="fig float_left p-1"/>
+<p>"Pixy is for anyone who wants to author components in HTML within the comforts of python. Since it transpiles to regular python it can be used with Flask, Django etc.."</p>
+
+<p>"It could be used to make static sites like this one but with the benefit of writing it all in python."</p>
+
+<p>"Or it could be used alongside HTMX to build a dynamic website following HATEOAS principles. A complete such example implementing TODOMVC can be found "<link_to target="https://github.com/pixyverse/todo_pixy?tab=readme-ov-file">"here."</link_to> </p>
+</section>
+
+<section>
+<header>
+<h2  id="why">"Why"</h2>
+</header>
+<img src="static/imgs/features.png" class_="fig float_right p-1"/>
+<p>"The current state-of-the art way to generate HTML content is jinja2. Unfortunately components are not first class in it and there is a distinct DSL you need to learn to work with it. Logic programming and loops have their own constructs. Pixy allows you to stick with traditional python programming idioms making it a pleasure to work with"</p>
+
+<p>"With type hints now gaining popularity Pixy can also bring proper typed components to UX development."</p>
+</section>
+
+<section>
+<header>
+<h2  id="how">"How"</h2>
+</header>
+
+<img src="static/imgs/wand.png" class_="fig float_left p-1"/>
+<p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md">"designed"</link_to>" to stand on the shoulder of giants. It reuses the entire python compiler toolchain by extending the PEG grammar that Python is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
+</section>
+
+</main>
+<footer>
+<h6>"Designed with "<a href="https://github.com/pixyverse/pixy">"Pixy"</a>" by "<link_to target="https://pradeeproark.com">"Pradeep Roark"</link_to></h6>
+</footer>
+</body>
+</html>
+)
