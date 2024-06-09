@@ -6,16 +6,32 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  publish:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
+jobs:
+
+  publish:
+    environment: github-pages
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - name: Install pypa/build
+      run: >-
+        python3 -m
+        pip install
+        build
+        --user
 
     - name: Install dependencies
-      run: make deps
+      run: make poetrysetup deps
 
     - name: Build pages
       run: make pages
@@ -23,7 +39,7 @@ jobs:
     - name: Upload artifact
       id: upload-pages-artifact
       uses: actions/upload-pages-artifact@v3.0.1
-      
+
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4      
+      uses: actions/deploy-pages@v4

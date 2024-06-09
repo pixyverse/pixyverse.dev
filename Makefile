@@ -1,10 +1,12 @@
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
+.ONESHELL:
+
 POETRY = $(shell command -v poetry 2> /dev/null)
 INSTALL_STAMP := .install.stamp
 POETRY_STAMP := .poetry.stamp
 GITHUB_PAGE := _site/index.html
-.ONESHELL:
+
 
 poetrysetup: $(POETRY_STAMP)
 $(POETRY_STAMP):
