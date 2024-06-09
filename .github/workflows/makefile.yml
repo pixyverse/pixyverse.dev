@@ -7,12 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
+  environment: github-pages
   publish:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install pypa/build
+        run: >-
+          python3 -m
+          pip install
+          build
+          --user
 
     - name: Install dependencies
       run: make deps
