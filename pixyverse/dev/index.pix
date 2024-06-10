@@ -3,8 +3,7 @@ from pygments import highlight
 from pygments.lexers import HtmlLexer, PythonLexer
 from pygments.formatters import HtmlFormatter
 
-jost_style = """
-
+inline_styles = """
 
 .float_left {
     float: left;
@@ -12,11 +11,6 @@ jost_style = """
 
 .float_right {
     float: right;
-}
-
-.fig {
-    width: 100px;
-    height: 100px;
 }
 
 .header {
@@ -43,8 +37,12 @@ def link_to(tagName, props, children):
     return <a href={props["target"]}>{children}</a>
 
 doc = (
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width"/>
+<title>"Pixyverse - JSX inspired component language natively embedded in python"</title>
+<meta name="description" content="pixy is a transpiler that transpiles pixy files into regular python code. Pixy files are JSX inspired component description formats that brings markup style declarative language natively embedded in python."/>
 <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css"/>
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="static/favicon/apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="static/favicon/apple-touch-icon-114x114.png" />
@@ -68,7 +66,7 @@ doc = (
 
 <style>
 {HtmlFormatter().get_style_defs('.highlight')}
-{jost_style}
+{inline_styles}
 </style>
 </head>
 <body class_=".layout-simple">
@@ -80,9 +78,9 @@ doc = (
             <li><a href="#why">"Who"</a></li>
             <li><a href="#why">"Why"</a></li>
             <li><a href="#how">"How"</a></li>
-            <li><a href="#get">"Get"<img src="static/imgs/icons8-github-24.png"/></a></li>
+            <li><a href="#get">"Get"<img alt="Github icon" src="static/imgs/icons8-github-24.webp"  width="24px" height="24px"/></a></li>
 
-            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"<img src="static/imgs/icons8-discord-24.png"/></link_to></li>
+            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"<img alt="Discord Icon" src="static/imgs/icons8-discord-24.webp" width="24px" height="24px"/></link_to></li>
         </menu>
     </nav>
 </header>
@@ -92,7 +90,7 @@ doc = (
 <header>
 <h2  id="what">"What"</h2>
 </header>
-<img src="static/imgs/pixy.png" class_="fig float_right p-1"/>
+<img src="static/imgs/pixy.webp" class_="float_right p-1" width="100px" height="100px" alt="Pixy Logo"/>
 <p>"""
 Pixy refers to both code written in the Pixy language, an extension of Python that supports component syntax embedded in Python.
 """</p><p>"""
@@ -127,7 +125,7 @@ def todo_list(tagName, props, children=[]):
 <header>
 <h2  id="who">"Who"</h2>
 </header>
-<img src="static/imgs/who.png" class_="fig float_left p-1"/>
+<img src="static/imgs/who.webp" class_="float_left p-1" width="100px" height="100px" alt="Who"/>
 <p>"Pixy is for anyone who wants to author components in HTML within the comforts of python. Since it transpiles to regular python it can be used with Flask, Django etc.."</p>
 
 <p>"It could be used to make static sites like this one but with the benefit of writing it all in python."</p>
@@ -139,7 +137,7 @@ def todo_list(tagName, props, children=[]):
 <header>
 <h2  id="why">"Why"</h2>
 </header>
-<img src="static/imgs/features.png" class_="fig float_right p-1"/>
+<img src="static/imgs/features.webp" class_="float_right p-1" width="94px" height="100px" alt="Why"/>
 <p>"The current state-of-the art way to generate HTML content is jinja2. Unfortunately components are not first class in it and there is a distinct DSL you need to learn to work with it. Logic programming and loops have their own constructs. Pixy allows you to stick with traditional python programming idioms making it a pleasure to work with"</p>
 
 <p>"With type hints now gaining popularity Pixy can also bring proper typed components to UX development."</p>
@@ -150,7 +148,7 @@ def todo_list(tagName, props, children=[]):
 <h2  id="how">"How"</h2>
 </header>
 
-<img src="static/imgs/wand.png" class_="fig float_left p-1"/>
+<img src="static/imgs/wand.webp" class_="float_left p-1" width="100px" height="100px" alt="How - Wand"/>
 <p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md">"designed"</link_to>" to stand on the shoulder of giants. It reuses the entire python compiler toolchain by extending the PEG grammar that Python is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
 </section>
 
