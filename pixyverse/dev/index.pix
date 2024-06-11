@@ -78,6 +78,7 @@ doc = (
             <li><a href="#why">"Who"</a></li>
             <li><a href="#why">"Why"</a></li>
             <li><a href="#how">"How"</a></li>
+            <li><link_to target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
             <li><a href="#get">"Get"<img alt="Github icon" src="static/imgs/icons8-github-24.webp"  width="24px" height="24px"/></a></li>
 
             <li><link_to target="https://discord.gg/xJSaZkGF">"Community"<img alt="Discord Icon" src="static/imgs/icons8-discord-24.webp" width="24px" height="24px"/></link_to></li>
