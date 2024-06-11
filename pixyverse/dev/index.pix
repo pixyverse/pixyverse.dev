@@ -86,8 +86,8 @@ doc = (
 <h2  id="what">"What"</h2>
 </header>
 <img src="static/imgs/pixy.webp" class_="float_right p-1" width="100px" height="100px" alt="Pixy Logo"/>
-<p>"""
-Pixy refers to both code written in the Pixy language, an extension of Python that supports component syntax embedded in Python.
+<p><link_to target="https://github.com/pixyverse/pixy">"Pixy"</link_to>"""
+ refers to both code written in the Pixy language, an extension of Python that supports component syntax embedded in Python.
 """</p><p>"""
 It also refers to the transpiler that transpiles Pixy language code into regular Python.
 """</p>
@@ -125,7 +125,7 @@ def todo_list(tagName, props, children=[]):
 
 <p>"It could be used to make static sites like this one but with the benefit of writing it all in python."</p>
 
-<p>"Or it could be used alongside HTMX to build a dynamic website following HATEOAS principles. A complete such example implementing TODOMVC can be found "<link_to target="https://github.com/pixyverse/todo_pixy?tab=readme-ov-file">"here."</link_to> </p>
+<p>"Or it could be used alongside "<link_to target="https://htmx.org">"HTMX"</link_to>" to build a dynamic website following "<link_to target="https://htmx.org/essays/hateoas/">"HATEOAS principles"</link_to>". A complete such example implementing TODOMVC can be found "<link_to target="https://github.com/pixyverse/todo_pixy?tab=readme-ov-file">"here."</link_to> </p>
 </section>
 
 <section>
@@ -144,7 +144,7 @@ def todo_list(tagName, props, children=[]):
 </header>
 
 <img src="static/imgs/wand.webp" class_="float_left p-1" width="100px" height="100px" alt="How - Wand"/>
-<p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md">"designed"</link_to>" to stand on the shoulder of giants. It reuses the entire python compiler toolchain by extending the PEG grammar that Python is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
+<p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md">"designed"</link_to>" to stand "<link_to target="https://legacy.reactjs.org/docs/introducing-jsx.html">"on the shoulder of giants"</link_to>". It reuses the entire python compiler toolchain by extending the "<link_to target="https://github.com/we-like-parsers/pegen">"PEG grammar that Python"</link_to>" is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
 </section>
 
 </main>
