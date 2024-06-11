@@ -13,11 +13,6 @@ inline_styles = """
     float: right;
 }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-}
-
 """
 
 def h_stack(tagName, props, children):
@@ -69,19 +64,18 @@ doc = (
 {inline_styles}
 </style>
 </head>
-<body class_=".layout-simple">
-<header class_="header">
+<body class_="layout-simple">
+<header>
     <h1><a href="/">"Pixy"</a></h1>
     <nav>
-        <menu class_="flex align-end">
+        <menu>
             <li><a href="#what">"What"</a></li>
-            <li><a href="#why">"Who"</a></li>
+            <li><a href="#who">"Who"</a></li>
             <li><a href="#why">"Why"</a></li>
             <li><a href="#how">"How"</a></li>
             <li><link_to target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
-            <li><a href="#get">"Get"<img alt="Github icon" src="static/imgs/icons8-github-24.webp"  width="24px" height="24px"/></a></li>
-
-            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"<img alt="Discord Icon" src="static/imgs/icons8-discord-24.webp" width="24px" height="24px"/></link_to></li>
+            <li><link_to target="https://github.com/pixyverse/render_html">"Code"</link_to></li>
+            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"</link_to></li>
         </menu>
     </nav>
 </header>
