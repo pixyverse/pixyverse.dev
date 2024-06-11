@@ -74,8 +74,7 @@ doc = (
             <li><a href="#why">"Why"</a></li>
             <li><a href="#how">"How"</a></li>
             <li><link_to target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
-            <li><a href="#get">"Code"</a></li>
-
+            <li><link_to target="https://github.com/pixyverse/render_html">"Code"</link_to></li>
             <li><link_to target="https://discord.gg/xJSaZkGF">"Community"</link_to></li>
         </menu>
     </nav>
