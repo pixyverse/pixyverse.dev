@@ -13,6 +13,22 @@ inline_styles = """
     float: right;
 }
 
+a[rel=external] {
+  padding-right: 1.25em;
+
+}
+
+a[rel=external]::after {
+  position: absolute;
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.25em;
+  background-size: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewbox='0 0 12.2 12.2' width='14' height='14'%3E%3Cpath d='M5.7 0v1.5h4L4.5 6.7l1 1.1 5.3-5.2v3.9h1.4V0z'/%3E%3Cpath fill='none' d='M3.4 6.7l3-2.9H1.5v7h7V5.9l-3 2.9z'/%3E%3Cpath d='M8.5 5.9v4.9h-7v-7h4.9l1.5-1.6H0v10h10V4.4z'/%3E%3C/svg%3E");
+  transform: translateY(0.25em);
+}
 """
 
 def h_stack(tagName, props, children):
@@ -29,7 +45,8 @@ def code_highlight(tagName, props, children):
     return <pre><code>{(highlight(child_str, lexer, HtmlFormatter()))}</code></pre>
 
 def link_to(tagName, props, children):
-    return <a href={props["target"]}>{children}</a>
+    isExternal = props.get('isExternal', False)
+    return <a href={props["target"]} rel={'external' if isExternal else ''} target={'_blank' if isExternal else ''}>{children}</a>
 
 doc = (
 <html lang="en">
@@ -69,10 +86,10 @@ doc = (
     <h1><a href="/">"Pixy"</a></h1>
     <nav>
         <menu>
-            <li><link_to target="https://playground.pixyverse.dev">"Playground"</link_to></li>
-            <li><link_to target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
-            <li><link_to target="https://github.com/pixyverse/render_html">"Code"</link_to></li>
-            <li><link_to target="https://discord.gg/xJSaZkGF">"Community"</link_to></li>
+            <li><link_to isExternal={True} target="https://playground.pixyverse.dev">"Playground"</link_to></li>
+            <li><link_to isExternal={True} target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
+            <li><link_to isExternal={True} target="https://github.com/pixyverse/render_html">"Code"</link_to></li>
+            <li><link_to isExternal={True} target="https://discord.gg/xJSaZkGF">"Community"</link_to></li>
         </menu>
     </nav>
 </header>
@@ -80,10 +97,10 @@ doc = (
 
 <section>
 <header>
-<h2  id="what">"What"</h2>
+<link_to target="#what"><h2 id="what">"What"</h2></link_to>
 </header>
 <img src="static/imgs/pixy.webp" class_="float_right p-1" width="100px" height="100px" alt="Pixy Logo"/>
-<p><link_to target="https://github.com/pixyverse/pixy">"Pixy"</link_to>"""
+<p><link_to target="https://github.com/pixyverse/pixy" isExternal={True}>"Pixy"</link_to>"""
  refers to both code written in the Pixy language, an extension of Python that supports component syntax embedded in Python.
 """</p><p>"""
 It also refers to the transpiler that transpiles Pixy language code into regular Python.
@@ -115,19 +132,19 @@ def todo_list(tagName, props, children=[]):
 
 <section>
 <header>
-<h2  id="who">"Who"</h2>
+<link_to target="#who"><h2 id="who">"Who"</h2></link_to>
 </header>
 <img src="static/imgs/who.webp" class_="float_left p-1" width="100px" height="100px" alt="Who"/>
 <p>"Pixy is for anyone who wants to author components in HTML within the comforts of python. Since it transpiles to regular python it can be used with Flask, Django etc.."</p>
 
 <p>"It could be used to make static sites like this one but with the benefit of writing it all in python."</p>
 
-<p>"Or it could be used alongside "<link_to target="https://htmx.org">"HTMX"</link_to>" to build a dynamic website following "<link_to target="https://htmx.org/essays/hateoas/">"HATEOAS principles"</link_to>". A complete such example implementing TODOMVC can be found "<link_to target="https://github.com/pixyverse/todo_pixy?tab=readme-ov-file">"here."</link_to> </p>
+<p>"Or it could be used alongside "<link_to target="https://htmx.org" isExternal={True}>"HTMX"</link_to>" to build a dynamic website following "<link_to target="https://htmx.org/essays/hateoas/" isExternal={True}>"HATEOAS principles"</link_to>". A complete such example implementing TODOMVC can be found "<link_to target="https://github.com/pixyverse/todo_pixy?tab=readme-ov-file" isExternal={True}>"here."</link_to> </p>
 </section>
 
 <section>
 <header>
-<h2  id="why">"Why"</h2>
+<link_to target="#why"><h2 id="why">"Why"</h2></link_to>
 </header>
 <img src="static/imgs/features.webp" class_="float_right p-1" width="94px" height="100px" alt="Why"/>
 <p>"The current state-of-the art way to generate HTML content is jinja2. Unfortunately components are not first class in it and there is a distinct DSL you need to learn to work with it. Logic programming and loops have their own constructs. Pixy allows you to stick with traditional python programming idioms making it a pleasure to work with"</p>
@@ -137,16 +154,16 @@ def todo_list(tagName, props, children=[]):
 
 <section>
 <header>
-<h2  id="how">"How"</h2>
+<link_to target="#how"><h2 id="how">"How"</h2></link_to>
 </header>
 
 <img src="static/imgs/wand.webp" class_="float_left p-1" width="100px" height="100px" alt="How - Wand"/>
-<p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md">"designed"</link_to>" to stand "<link_to target="https://legacy.reactjs.org/docs/introducing-jsx.html">"on the shoulder of giants"</link_to>". It reuses the entire python compiler toolchain by extending the "<link_to target="https://github.com/we-like-parsers/pegen">"PEG grammar that Python"</link_to>" is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
+<p>"Pixy is "<link_to target="https://github.com/pixyverse/pixy/blob/develop/DESIGN.md" isExternal={True}>"designed"</link_to>" to stand "<link_to target="https://legacy.reactjs.org/docs/introducing-jsx.html" isExternal={True}>"on the shoulder of giants"</link_to>". It reuses the entire python compiler toolchain by extending the "<link_to target="https://github.com/we-like-parsers/pegen" isExternal={True}>"PEG grammar that Python"</link_to>" is built on. Thereby it does "<em>"Minimum Necessary Changes"</em>" to make components first class citizens in Python language."</p>
 </section>
 
 </main>
 <footer>
-<h6>"Designed with "<a href="https://github.com/pixyverse/pixy">"Pixy"</a>" by "<link_to target="https://pradeeproark.com">"Pradeep Roark"</link_to></h6>
+<h6>"Designed with "<a href="https://github.com/pixyverse/pixy" isExternal={True}>"Pixy"</a>" by "<link_to target="https://pradeeproark.com">"Pradeep Roark"</link_to></h6>
 </footer>
 </body>
 </html>

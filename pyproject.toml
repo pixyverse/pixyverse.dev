@@ -8,8 +8,8 @@ packages = [{include = "pixyverse"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pixyverse-render-html = "^0.1.5"
 pygments = "^2.18.0"
+pixyverse-render-html = "^0.1.6"
 
 
 [tool.poetry.group.dev.dependencies]
