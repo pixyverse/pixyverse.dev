@@ -89,7 +89,7 @@ doc = (
             <li><link_to isExternal={True} target="https://playground.pixyverse.dev">"Playground"</link_to></li>
             <li><link_to isExternal={True} target="https://pixyverse.github.io/render_html/">"Docs"</link_to></li>
             <li><link_to isExternal={True} target="https://github.com/pixyverse/render_html">"Code"</link_to></li>
-            <li><link_to isExternal={True} target="https://discord.gg/xJSaZkGF">"Community"</link_to></li>
+            <li><link_to isExternal={True} target="https://discord.gg/zDn38BHBem">"Community"</link_to></li>
         </menu>
     </nav>
 </header>
